@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jens Currie — Marine Mammal Scientist</title>
+  <meta name="description" content="Chief Scientist at Pacific Whale Foundation. Cetacean ecology, conservation physiology, and bioenergetics across the Pacific Ocean." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ocean-deep: #0a1628;
+      --ocean-mid: #112240;
+      --ocean-surface: #1a3a5c;
+      --biolum: #4fc3a1;
+      --biolum-dim: #2a7a62;
+      --foam: #e8f4f0;
+      --sand: #f5f0e8;
+      --ink: #1a1a2e;
+      --muted: #6b7a8d;
+      --warm-white: #fafaf8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: var(--warm-white);
+      color: var(--ink);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--foam);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(232,244,240,0.7);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--biolum); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--ocean-deep);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 3rem 4rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(79,195,161,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(17,34,64,0.8) 0%, transparent 70%);
+    }
+
+    /* animated wave lines */
+    .wave-lines {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 220px;
+      opacity: 0.18;
+    }
+
+    .wave-lines svg { width: 100%; height: 100%; }
+
+    .hero-content {
+      position: relative;
+      max-width: 720px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--biolum);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 6vw, 5.2rem);
+      font-weight: 600;
+      color: var(--foam);
+      line-height: 1.08;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--biolum);
+    }
+
+    .hero-tagline {
+      font-size: 1.12rem;
+      color: rgba(232,244,240,0.72);
+      max-width: 560px;
+      margin-bottom: 2.8rem;
+      line-height: 1.75;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 3px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .btn-primary {
+      background: var(--biolum);
+      color: var(--ocean-deep);
+    }
+
+    .btn-primary:hover {
+      background: #6dd4b8;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(232,244,240,0.3);
+      color: var(--foam);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--biolum);
+      color: var(--biolum);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--biolum-dim);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 2.5rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--biolum);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--warm-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: #3a3a4a;
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .about-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .meta-card {
+      background: var(--foam);
+      border-left: 3px solid var(--biolum);
+      padding: 1.1rem 1.3rem;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .meta-card-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .meta-card-value {
+      font-size: 0.95rem;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── RESEARCH ── */
+    #research { background: var(--sand); }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .research-card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 6px;
+      padding: 1.6rem;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .research-card:hover {
+      box-shadow: 0 8px 32px rgba(10,22,40,0.1);
+      transform: translateY(-3px);
+    }
+
+    .research-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .research-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--ink);
+    }
+
+    .research-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── PUBLICATIONS ── */
+    #publications { background: var(--warm-white); }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pub-item {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .pub-year {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--biolum-dim);
+      padding-top: 0.2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .pub-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+      line-height: 1.45;
+    }
+
+    .pub-journal {
+      font-size: 0.83rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .pub-doi {
+      font-size: 0.78rem;
+      color: var(--biolum-dim);
+      text-decoration: none;
+      margin-top: 0.3rem;
+      display: inline-block;
+    }
+
+    .pub-doi:hover { color: var(--biolum); text-decoration: underline; }
+
+    .scholar-link {
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--biolum-dim);
+      font-size: 0.88rem;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid var(--biolum-dim);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+
+    .scholar-link:hover { color: var(--biolum); border-color: var(--biolum); }
+
+    /* ── AFFILIATIONS ── */
+    #affiliations { background: var(--sand); }
+
+    .affil-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .affil-item {
+      background: white;
+      padding: 1.2rem 1.4rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.07);
+      font-size: 0.88rem;
+      color: #3a3a4a;
+      line-height: 1.5;
+    }
+
+    .affil-item strong {
+      display: block;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    /* ── CONNECT ── */
+    #connect {
+      background: var(--ocean-deep);
+      max-width: 100%;
+      padding: 6rem 3rem;
+    }
+
+    #connect .inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    #connect .section-label { color: var(--biolum); }
+    #connect .section-title { color: var(--foam); }
+
+    .connect-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .connect-text {
+      color: rgba(232,244,240,0.7);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .connect-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .connect-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.3rem;
+      border: 1px solid rgba(232,244,240,0.12);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.25s;
+      color: var(--foam);
+    }
+
+    .connect-link:hover {
+      border-color: var(--biolum);
+      background: rgba(79,195,161,0.06);
+    }
+
+    .connect-link-icon {
+      font-size: 1.1rem;
+      width: 28px;
+      text-align: center;
+    }
+
+    .connect-link-text strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 0.1rem;
+    }
+
+    .connect-link-text span {
+      font-size: 0.78rem;
+      color: rgba(232,244,240,0.5);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060e1a;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      color: rgba(232,244,240,0.3);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { padding: 5rem 1.5rem 3rem; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid, .connect-grid { grid-template-columns: 1fr; gap: 2rem; }
+      #connect { padding: 4rem 1.5rem; }
+    }
+
+    /* ── FADE-IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Jens Currie</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#affiliations">Affiliations</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wave-lines" aria-hidden="true">
+    <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,120 C240,60 480,180 720,120 C960,60 1200,160 1440,100 L1440,220 L0,220 Z" fill="rgba(79,195,161,0.15)"/>
+      <path d="M0,160 C360,100 720,200 1080,140 C1260,110 1380,150 1440,140 L1440,220 L0,220 Z" fill="rgba(17,34,64,0.5)"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Chief Scientist · Pacific Whale Foundation</p>
+    <h1 class="hero-name">Jens<br><em>Currie</em></h1>
+    <p class="hero-tagline">Marine mammal scientist working at the intersection of cetacean ecology, conservation physiology, and bioenergetics — with a focus on translating research into protection for whales and dolphins across the Pacific Ocean.</p>
+    <div class="hero-links">
+      <a href="#research" class="btn btn-primary">Research program</a>
+      <a href="#connect" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label fade-in">Background</p>
+  <h2 class="section-title fade-in">About me</h2>
+  <div class="divider fade-in"></div>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>I am Chief Scientist at <a href="https://pacificwhale.org" style="color:var(--biolum-dim)">Pacific Whale Foundation</a>, where I direct research programs across Hawaiʻi, Australia, Ecuador, and Chile. I am also a PhD candidate at the University of Hawaiʻi at Mānoa, where my dissertation examines the energetics, ecology, and conservation of the endangered Main Hawaiian Islands insular false killer whale population.</p>
+      <p>My research broadly investigates the ecological and physiological responses of whales and dolphins to environmental and anthropogenic stressors — with the overarching aim of translating science into management action. I integrate drone photogrammetry, CATS biologging tags, bioenergetic modelling, and long-term photo-identification to understand how cetacean populations are faring and why.</p>
+      <p>I grew up on the East Coast of Canada and earned my B.Sc. and M.Sc. in Biology from Memorial University of Newfoundland before moving to Hawaiʻi in 2013. I have authored more than 35 peer-reviewed publications and contributed to two books.</p>
+    </div>
+    <div class="about-meta fade-in">
+      <div class="meta-card">
+        <div class="meta-card-label">Current position</div>
+        <div class="meta-card-value">Chief Scientist, Pacific Whale Foundation<br>PhD Candidate, University of Hawaiʻi at Mānoa</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">Education</div>
+        <div class="meta-card-value">PhD (in progress) — University of Hawaiʻi at Mānoa<br>M.Sc. Biology — Memorial University of Newfoundland<br>B.Sc. Biology — Memorial University of Newfoundland</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">Research locations</div>
+        <div class="meta-card-value">Hawaiʻi · Australia · Ecuador · Chile</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">Publications</div>
+        <div class="meta-card-value">35+ peer-reviewed articles · 2 books</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <p class="section-label fade-in">Science program</p>
+  <h2 class="section-title fade-in">Research focus</h2>
+  <div class="divider fade-in"></div>
+  <div class="research-grid">
+    <div class="research-card fade-in">
+      <div class="research-icon">🐬</div>
+      <h3>False killer whale bioenergetics</h3>
+      <p>PhD research investigating energetic expenditure, nutritional stress, and prey requirements of the endangered Main Hawaiian Islands insular false killer whale — combining CATS tags, drone photogrammetry, and bioenergetic modelling to inform recovery planning.</p>
+    </div>
+    <div class="research-card fade-in">
+      <div class="research-icon">🐋</div>
+      <h3>Humpback whale ecology</h3>
+      <p>Long-term population dynamics, body condition, mother–calf energetics, vessel disturbance, and migratory connectivity of North Pacific humpback whales across Hawaiian and Australian waters.</p>
+    </div>
+    <div class="research-card fade-in">
+      <div class="research-icon">📡</div>
+      <h3>Dolphin population dynamics</h3>
+      <p>Abundance estimation, social structure, habitat use, and fisheries interactions of spinner, pantropical spotted, and common bottlenose dolphins in Maui Nui, Hawaiʻi.</p>
+    </div>
+    <div class="research-card fade-in">
+      <div class="research-icon">🌊</div>
+      <h3>Conservation science-to-action</h3>
+      <p>Developing science-based frameworks that translate cetacean research into management advice for NOAA, the U.S. Marine Mammal Commission, the National Marine Sanctuary, and the IWC Scientific Committee.</p>
+    </div>
+    <div class="research-card fade-in">
+      <div class="research-icon">🛸</div>
+      <h3>Drone photogrammetry</h3>
+      <p>UAS-based morphometrics for body condition assessment across multiple cetacean species, including validation studies of commercial UAV platforms for field use.</p>
+    </div>
+    <div class="research-card fade-in">
+      <div class="research-icon">🏖️</div>
+      <h3>Marine debris & ocean health</h3>
+      <p>Quantifying marine debris distribution, composition, and risk to cetaceans in Maui County waters; policy evaluation for litter reduction strategies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <p class="section-label fade-in">Recent work</p>
+  <h2 class="section-title fade-in">Selected publications</h2>
+  <div class="divider fade-in"></div>
+  <p style="font-size:0.88rem; color:var(--muted); margin-bottom:2rem;" class="fade-in">Five most recent lead-author publications. For a complete list, see Google Scholar.</p>
+
+  <div class="pub-list">
+
+    <div class="pub-item fade-in">
+      <span class="pub-year">2026</span>
+      <div>
+        <p class="pub-title">Validation of the DJI Mavic 3 Pro for field-based whale photogrammetry</p>
+        <p class="pub-journal">Currie, J.J., Stirling, B., and Barber-Meyer, S. — <em>Aquatic Mammals</em>, 52(2): 175–182</p>
+        <a class="pub-doi" href="https://doi.org/10.1578/AM.52.2.2026.175" target="_blank" rel="noopener">doi.org/10.1578/AM.52.2.2026.175 ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in">
+      <span class="pub-year">2023</span>
+      <div>
+        <p class="pub-title">The impact of the anthropause caused by the COVID-19 pandemic on beach debris accumulation in Maui, Hawaiʻi</p>
+        <p class="pub-journal">Currie, J.J., Sullivan, F.A., Beato, E., Machernis, A.F., Olson, G.L., Stack, S.H. — <em>Scientific Reports</em>, 13(17729)</p>
+        <a class="pub-doi" href="https://doi.org/10.1038/s41598-023-44944-4" target="_blank" rel="noopener">doi.org/10.1038/s41598-023-44944-4 ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in">
+      <span class="pub-year">2021</span>
+      <div>
+        <p class="pub-title">Rapid weight loss in free-ranging pygmy killer whales (<em>Feresa attenuata</em>) and the implications for anthropogenic disturbance of odontocetes</p>
+        <p class="pub-journal">Currie, J.J., van Aswegen, M., Stack, S.H., West, K.L., Vivier, F. and Bejder, L. — <em>Scientific Reports</em>, 11: 8181</p>
+        <a class="pub-doi" href="https://doi.org/10.1038/s41598-021-87514-2" target="_blank" rel="noopener">doi.org/10.1038/s41598-021-87514-2 ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in">
+      <span class="pub-year">2021</span>
+      <div>
+        <p class="pub-title">The impact of vessels on humpback whale behavior: the benefit of added whale watching guidelines</p>
+        <p class="pub-journal">Currie, J.J., McCordic, J.A., Olson, G.L., Machernis, A.F. and Stack, S.H. — <em>Frontiers in Marine Science</em>, 8: 601433</p>
+        <a class="pub-doi" href="https://doi.org/10.3389/fmars.2021.601433" target="_blank" rel="noopener">doi.org/10.3389/fmars.2021.601433 ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in">
+      <span class="pub-year">2021</span>
+      <div>
+        <p class="pub-title">Getting butts off the beach: Policy alone is not effective at reducing cigarette filter litter on beaches in Maui, Hawaiʻi</p>
+        <p class="pub-journal">Currie, J.J. and Stack, S.H. — <em>Marine Pollution Bulletin</em>, 173: 112937</p>
+        <a class="pub-doi" href="https://doi.org/10.1016/j.marpolbul.2021.112937" target="_blank" rel="noopener">doi.org/10.1016/j.marpolbul.2021.112937 ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="https://scholar.google.com/citations?user=2bP0QUQAAAAJ&hl=en" target="_blank" rel="noopener" class="scholar-link fade-in">
+    View full publication list on Google Scholar ↗
+  </a>
+</section>
+
+<!-- AFFILIATIONS -->
+<section id="affiliations">
+  <p class="section-label fade-in">Roles &amp; memberships</p>
+  <h2 class="section-title fade-in">Affiliations</h2>
+  <div class="divider fade-in"></div>
+  <div class="affil-grid">
+    <div class="affil-item fade-in">
+      <strong>Primary institution</strong>
+      Pacific Whale Foundation — Chief Scientist
+    </div>
+    <div class="affil-item fade-in">
+      <strong>PhD program</strong>
+      University of Hawaiʻi at Mānoa — Marine Mammal Research Program
+    </div>
+    <div class="affil-item fade-in">
+      <strong>Advisory</strong>
+      Research Chair, Hawaiian Islands Humpback Whale National Marine Sanctuary Advisory Council
+    </div>
+    <div class="affil-item fade-in">
+      <strong>International</strong>
+      Invited member, IWC Scientific Committee
+    </div>
+    <div class="affil-item fade-in">
+      <strong>Federal advisory</strong>
+      Advisor to U.S. Marine Mammal Commission, NOAA Fisheries, and the Hawaiian Islands Humpback Whale National Marine Sanctuary
+    </div>
+    <div class="affil-item fade-in">
+      <strong>Emergency response</strong>
+      NOAA Marine Mammal Stranding First Responder · Level 3 Large Whale Entanglement Responder
+    </div>
+    <div class="affil-item fade-in">
+      <strong>Professional</strong>
+      Society for Marine Mammalogy
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<div id="connect">
+  <div class="inner">
+    <p class="section-label fade-in">Get in touch</p>
+    <h2 class="section-title fade-in">Connect</h2>
+    <div class="divider fade-in" style="background:var(--biolum);"></div>
+    <div class="connect-grid">
+      <p class="connect-text fade-in">
+        I welcome collaboration inquiries, media requests, and outreach from managers, policymakers, and fellow researchers. The best way to reach me is by email through Pacific Whale Foundation or the University of Hawaiʻi.
+      </p>
+      <div class="connect-links fade-in">
+        <a href="mailto:curriej@hawaii.edu" class="connect-link">
+          <span class="connect-link-icon">✉</span>
+          <div class="connect-link-text">
+            <strong>Email (UH)</strong>
+            <span>curriej@hawaii.edu</span>
+          </div>
+        </a>
+        <a href="https://scholar.google.com/citations?user=2bP0QUQAAAAJ&hl=en" target="_blank" rel="noopener" class="connect-link">
+          <span class="connect-link-icon">🎓</span>
+          <div class="connect-link-text">
+            <strong>Google Scholar</strong>
+            <span>Publications &amp; citations</span>
+          </div>
+        </a>
+        <a href="https://orcid.org/0000-0001-6084-3091" target="_blank" rel="noopener" class="connect-link">
+          <span class="connect-link-icon">⬡</span>
+          <div class="connect-link-text">
+            <strong>ORCID</strong>
+            <span>0000-0001-6084-3091</span>
+          </div>
+        </a>
+        <a href="https://www.researchgate.net/profile/Jens-Currie" target="_blank" rel="noopener" class="connect-link">
+          <span class="connect-link-icon">🔬</span>
+          <div class="connect-link-text">
+            <strong>ResearchGate</strong>
+            <span>Profile &amp; preprints</span>
+          </div>
+        </a>
+        <a href="https://pacificwhale.org/person/jens-currie/" target="_blank" rel="noopener" class="connect-link">
+          <span class="connect-link-icon">🐋</span>
+          <div class="connect-link-text">
+            <strong>Pacific Whale Foundation</strong>
+            <span>Institutional profile</span>
+          </div>
+        </a>
+        <a href="https://www.mmrphawaii.org/jens-currie" target="_blank" rel="noopener" class="connect-link">
+          <span class="connect-link-icon">🏝</span>
+          <div class="connect-link-text">
+            <strong>MMRP Hawaii</strong>
+            <span>PhD research profile</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Jens Currie · Kīhei, Hawaiʻi · Built with GitHub Pages</p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
